@@ -5,8 +5,8 @@ import { FaUserTie } from "react-icons/fa";
 import styled from "styled-components";
 
 const LinkItem = styled(Nav.Link)`
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: 2vw;
+  margin-right: 2vw;
 `;
 
 const Gnb = () => {
@@ -16,14 +16,14 @@ const Gnb = () => {
         collapseOnSelect
         expand="lg"
         style={{
-          marginTop: "2vw",
           borderBottom: "solid 1px",
-          paddingBottom: "3vw",
+          borderBottomColor: "#CED4D3",
+          paddingBottom: "2vw",
           marginBottom: "2vw",
         }}
       >
         <Container fluid style={{ padding: "0" }}>
-          <Navbar.Brand href="#home" style={{ marginRight: "2rem" }}>
+          <Navbar.Brand href="#home" style={{ marginRight: "2vw" }}>
             <div
               style={{
                 display: "inline-block",
@@ -47,18 +47,18 @@ const Gnb = () => {
             </Nav>
             <Nav>
               <LinkItem eventKey={2} href="#memes">
-                <FaUserTie style={{ marginRight: "0.5rem" }} />
+                <FaUserTie style={{ marginRight: "0.5vw" }} />
                 Log In
               </LinkItem>
               <LinkItem href="#deets">
-                <BsFillHandbagFill style={{ marginRight: "0.5rem" }} />
+                <BsFillHandbagFill style={{ marginRight: "0.5vw" }} />
                 Basket (0)
               </LinkItem>
             </Nav>
             <AiOutlineSearch
               style={{
                 border: "solid 1px",
-                fontSize: "2.7rem",
+                fontSize: "2.5rem",
                 padding: "0.6rem",
               }}
             />
