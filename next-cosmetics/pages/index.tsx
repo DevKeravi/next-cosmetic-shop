@@ -2,11 +2,9 @@ import type { NextPage } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainCarousel from "../src/components/MainCarousel";
 import { Row, Col, Container, Image } from "react-bootstrap";
-import styled from "styled-components";
 import { Button } from "react-bootstrap/";
 import MainGrid from "../src/components/MainGrid";
 import MainGridRes from "../src/components/MainGridRes";
-import { Form } from "react-bootstrap";
 import Footer from "../src/components/Footer";
 const Home: NextPage = () => {
   return (
@@ -92,9 +90,6 @@ const Home: NextPage = () => {
         <Col>
           <MainCarousel />
         </Col>
-      </Row>
-      <Row>
-        <Footer />
       </Row>
     </Container>
   );

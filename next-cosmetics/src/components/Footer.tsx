@@ -9,19 +9,19 @@ const cardProps: FooterCardProps[] = [
     title: "COLLECTION",
     categories: [
       {
-        title: "Woman",
+        title: "Eye",
         link: "#",
       },
       {
-        title: "Men",
+        title: "Lip",
         link: "#",
       },
       {
-        title: "Kids",
+        title: "Cheek",
         link: "#",
       },
       {
-        title: "Comming Soon",
+        title: "Foundation",
         link: "#",
       },
     ],

@@ -39,11 +39,11 @@ const Gnb = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <LinkItem href="#features">Woman</LinkItem>
-              <LinkItem href="#pricing">Man</LinkItem>
-              <LinkItem href="#pricing">Kids</LinkItem>
-              <LinkItem href="#pricing">Comming Soon</LinkItem>
-              <LinkItem href="#pricing">About</LinkItem>
+              <LinkItem href="/eye">Eye</LinkItem>
+              <LinkItem href="/lip">Lip</LinkItem>
+              <LinkItem href="/cheek">Cheek</LinkItem>
+              <LinkItem href="/foundation">Foundation</LinkItem>
+              <LinkItem href="/about">About</LinkItem>
             </Nav>
             <Nav>
               <LinkItem eventKey={2} href="#memes">
