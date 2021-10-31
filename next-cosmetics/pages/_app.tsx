@@ -7,9 +7,9 @@ import Footer from "../src/components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import wrapper from "../store/configureStore";
 import axios from "axios";
+import { defaultUrl } from "../config/config";
 
-axios.defaults.baseURL =
-  "http://makeup-api.herokuapp.com/api/v1/products.json?brand=dior";
+axios.defaults.baseURL = defaultUrl;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

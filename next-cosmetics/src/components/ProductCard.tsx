@@ -4,9 +4,9 @@ interface ProductCardProps {
   productList: any;
 }
 const ProductCard = ({ productList }: ProductCardProps) => {
-  const title = productList[0].product_type.replace("_", " ").toUpperCase();
+  const title = productList[0]?.product_type.replace("_", " ").toUpperCase();
   return (
-    <Container style={{ marginTop: "2rem" }}>
+    <Container style={{ marginTop: "2rem", marginBottom: "1rem" }}>
       <Row
         className="g-0"
         style={{ textAlign: "center", marginBottom: "1rem" }}
@@ -20,7 +20,10 @@ const ProductCard = ({ productList }: ProductCardProps) => {
         </Col>
         <Row className="g-0">
           <Col>
-            <a href="#" style={{ fontStyle: "italic", color: "grey" }}>
+            <a
+              href={`/category/${productList[0].product_type}`}
+              style={{ fontStyle: "italic", color: "grey" }}
+            >
               show more
             </a>
           </Col>
@@ -40,7 +43,7 @@ const ProductCard = ({ productList }: ProductCardProps) => {
               <Row className="g-0">
                 <Col>{v.name}</Col>
               </Row>
-              <Row>
+              <Row className="g-0">
                 <Col>$ {v.price}</Col>
               </Row>
             </Row>

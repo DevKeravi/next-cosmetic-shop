@@ -17,15 +17,15 @@ const eye = () => {
   const eyebrow = productList.filter((v: any) => {
     return v.product_type === "eyebrow";
   });
-  const blush = productList.filter((v: any) => {
-    return v.product_type === "blush";
+  const mascara = productList.filter((v: any) => {
+    return v.product_type === "mascara";
   });
 
   return (
     <>
       <ProductCard productList={eyebrow.slice(0, 4)} />
-      <ProductCard productList={blush.slice(0, 4)} />
       <ProductCard productList={eyeshadow.slice(2, 6)} />
+      <ProductCard productList={mascara.slice(2, 6)} />
     </>
   );
 };
