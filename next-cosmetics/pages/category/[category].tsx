@@ -16,27 +16,130 @@ import {
   Button,
   ButtonGroup,
   ButtonToolbar,
+  DropdownButton,
+  Dropdown,
 } from "react-bootstrap";
 
 const category = () => {
   // 한페이지에 보여줄 컨텐츠 수
   const pageContentsLimit = 12;
   const [curPageIndex, setCurPageIndex] = useState(0);
-
   const { productList } = useSelector((state: any) => state.products);
+  const [filteredList, setFilteredList] = useState(productList);
   var pageLength: number =
-    Math.floor(productList.length / pageContentsLimit) + 1;
+    Math.floor(filteredList.length / pageContentsLimit) + 1;
+
+  //가격 에버리지 계산
+  const calcPrice = (productList: any) => {
+    var minPrice = productList[0].price;
+    var maxPrice = 0;
+    var average = 0;
+    var lowAverPrice = 0;
+    var highAverPrice = 0;
+    var priceList = [];
+
+    productList.map((v: any) => {
+      if (v.price < minPrice) {
+        minPrice = Math.floor(v.price);
+      }
+      if (v.price > maxPrice) {
+        maxPrice = Math.floor(v.price);
+      }
+    });
+    average = Math.floor((minPrice + maxPrice) / 2);
+    lowAverPrice = Math.floor((minPrice + average) / 2);
+    highAverPrice = Math.floor((maxPrice + average) / 2);
+    priceList.push(minPrice, lowAverPrice, highAverPrice, maxPrice);
+    return priceList;
+  };
+
+  const priceList = calcPrice(productList);
+
+  //
+
+  const colorPalette = (productList: any) => {
+    const colors: any[] = [];
+    productList.map((product: any) => {
+      product.product_colors.map((color: any) => {
+        colors.push(color);
+      });
+    });
+    colors.reduce((acc, current) => {
+      if (
+        acc.findIndex(
+          ({ hex_value }: any) => hex_value === current.hex_value
+        ) === -1
+      ) {
+        acc.push(current);
+      }
+      return acc;
+    }, []);
+    return colors;
+  };
+  const colorList = colorPalette(productList);
+
   var contentList = [];
+
   for (var i = 0; i < pageLength; i++) {
     const curIndex = i * pageContentsLimit;
-    if (curIndex + pageContentsLimit > productList.length) {
-      contentList.push(productList.slice(curIndex, productList.length));
+
+    if (curIndex + pageContentsLimit > filteredList.length) {
+      contentList.push(filteredList.slice(curIndex, filteredList.length));
     } else {
-      contentList.push(productList.slice(curIndex, pageContentsLimit));
+      contentList.push(filteredList.slice(curIndex, pageContentsLimit));
     }
   }
   const title = productList[0]?.product_type.replace("_", " ").toUpperCase();
 
+  //필터링 함수
+  const filterListByPrice = (price: number) => {
+    const filterdListByPrice = productList.filter(
+      (product: any) => parseInt(product.price) >= price
+    );
+    setFilteredList(filterdListByPrice);
+  };
+  //TODO
+  /*
+  const filterListByColor = (hex_value: string) => {
+    setFilteredList(filterListColor);
+  };
+*/
+
+  const priceItems = () => {
+    var items = [];
+    for (i = 0; i < priceList.length; i++) {
+      if (i < priceList.length) {
+        items.push(
+          <Dropdown.Item
+            key={i}
+            id={priceList[i]}
+            style={{ color: "grey", fontSize: "0.9rem" }}
+            onClick={(e) => {
+              const { id } = e.target as HTMLTextAreaElement;
+              filterListByPrice(parseInt(id));
+            }}
+          >
+            ${priceList[i]}~{priceList[i + 1]}
+          </Dropdown.Item>
+        );
+      } else {
+        items.push(
+          <Dropdown.Item
+            key={i}
+            style={{
+              color: "grey",
+              fontSize: "0.9rem",
+              minWidth: "14vw",
+              maxWidth: "14vw",
+            }}
+          >
+            ${priceList[i]} and more
+          </Dropdown.Item>
+        );
+      }
+    }
+    return items;
+  };
   const pageButton = () => {
     const buttons = [];
     for (i = 0; i < pageLength; i++) {
@@ -100,9 +203,77 @@ const category = () => {
             All products
           </Col>
         </Row>
-        <Row className="g-0">sorting</Row>
+        <Row
+          className="g-0"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Col lg={2} style={{ textAlign: "center" }}>
+            <Dropdown className="d-inline ">
+              <Dropdown.Toggle
+                id="dropdown-autoclose-true"
+                style={{
+                  backgroundColor: "white",
+                  color: "grey",
+                  border: "none",
+                  borderBottom: "1px solid",
+                  fontStyle: "italic",
+                  textAlign: "left",
+                  borderRadius: "0",
+                  boxShadow: "none",
+                  minWidth: "10vw",
+                  maxWidth: "14vw",
+                }}
+              >
+                <span style={{ marginRight: "10vw" }}>Price</span>
+              </Dropdown.Toggle>
+              <Dropdown.Menu style={{ border: "none" }}>
+                {priceItems()}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Col>
+          <Col lg={2} style={{ textAlign: "center" }}>
+            <Dropdown className="d-inline ">
+              <Dropdown.Toggle
+                id="dropdown-autoclose-true"
+                style={{
+                  backgroundColor: "white",
+                  color: "grey",
+                  border: "none",
+                  borderBottom: "1px solid",
+                  fontStyle: "italic",
+                  textAlign: "left",
+                  borderRadius: "0",
+                  boxShadow: "none",
+                  minWidth: "10vw",
+                  maxWidth: "14vw",
+                }}
+              >
+                <span style={{ marginRight: "10vw" }}>Colour</span>
+              </Dropdown.Toggle>
+              <Dropdown.Menu style={{ border: "none" }}>
+                {colorList.map((v: any) => (
+                  <Dropdown.Item
+                    key={v.hex_value}
+                    id={v.hex_value}
+                    style={{
+                      backgroundColor: v.hex_value,
+                      minWidth: "14vw",
+                      maxWidth: "14vw",
+                    }}
+                    onClick={(e: any) => {
+                      const { id } = e.target as HTMLTextAreaElement;
+                      filterListByColor(id);
+                    }}
+                  >
+                    {v.colour_name}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Col>
+        </Row>
         <Row className="g-0 ">
-          {contentList[curPageIndex].map((v: any) => (
+          {contentList[curPageIndex]?.map((v: any) => (
             <Col lg={3} xs={6} key={v.id} style={{ textAlign: "center" }}>
               <Row className="g-0">
                 <Col>
