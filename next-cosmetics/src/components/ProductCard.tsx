@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Image, Container, Row, Col } from "react-bootstrap";
 
 interface ProductCardProps {
@@ -20,12 +21,9 @@ const ProductCard = ({ productList }: ProductCardProps) => {
         </Col>
         <Row className="g-0">
           <Col>
-            <a
-              href={`/category/${productList[0].product_type}`}
-              style={{ fontStyle: "italic", color: "grey" }}
-            >
-              show more
-            </a>
+            <Link href={`/category/${productList[0].product_type}`}>
+              <a style={{ fontStyle: "italic", color: "grey" }}>show more</a>
+            </Link>
           </Col>
         </Row>
       </Row>
@@ -33,13 +31,20 @@ const ProductCard = ({ productList }: ProductCardProps) => {
         {productList.map((v: any) => (
           <Col lg={3} xs={6} key={v.id} style={{ textAlign: "center" }}>
             <Row className="g-0" style={{ marginTop: "1rem" }}>
-              <Col>
-                <Image
-                  src={v.image_link}
-                  alt={v.name}
-                  style={{ maxWidth: "150px", maxHeight: "200px" }}
-                />
-              </Col>
+              <Link href={`/detail/${v.id}`}>
+                <Col>
+                  <Image
+                    src={v.image_link}
+                    alt={v.name}
+                    style={{
+                      maxWidth: "150px",
+                      maxHeight: "200px",
+                      minWidth: "150px",
+                      minHeight: "200px",
+                    }}
+                  />
+                </Col>
+              </Link>
               <Row className="g-0">
                 <Col>{v.name}</Col>
               </Row>

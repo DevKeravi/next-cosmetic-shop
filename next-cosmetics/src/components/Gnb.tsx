@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsFillHandbagFill } from "react-icons/bs";
@@ -23,27 +24,39 @@ const Gnb = () => {
         }}
       >
         <Container fluid style={{ padding: "0" }}>
-          <Navbar.Brand href="#home" style={{ marginRight: "2vw" }}>
-            <div
-              style={{
-                display: "inline-block",
-                backgroundColor: "black",
-                fontSize: "1.2rem",
-                color: "white",
-                padding: "0.8rem",
-              }}
-            >
-              SH
-            </div>
-          </Navbar.Brand>
+          <Link href="/" passHref>
+            <Navbar.Brand style={{ marginRight: "2vw" }}>
+              <div
+                style={{
+                  display: "inline-block",
+                  backgroundColor: "black",
+                  fontSize: "1.2rem",
+                  color: "white",
+                  padding: "0.8rem",
+                }}
+              >
+                SH
+              </div>
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <LinkItem href="/eye">Eye</LinkItem>
-              <LinkItem href="/lip">Lip</LinkItem>
-              <LinkItem href="/cheek">Cheek</LinkItem>
-              <LinkItem href="/foundation">Foundation</LinkItem>
-              <LinkItem href="/about">About</LinkItem>
+              <Link href="/eye" passHref>
+                <LinkItem>Eye</LinkItem>
+              </Link>
+              <Link href="/lip" passHref>
+                <LinkItem>Lip</LinkItem>
+              </Link>
+              <Link href="/cheek" passHref>
+                <LinkItem>Cheek</LinkItem>
+              </Link>
+              <Link href="/foundation" passHref>
+                <LinkItem>Foundation</LinkItem>
+              </Link>
+              <Link href="/about" passHref>
+                <LinkItem>About</LinkItem>
+              </Link>
             </Nav>
             <Nav>
               <LinkItem eventKey={2} href="#memes">
