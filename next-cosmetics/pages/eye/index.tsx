@@ -48,6 +48,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
           payload: err,
         });
       }
+
       return {
         props: {},
       };

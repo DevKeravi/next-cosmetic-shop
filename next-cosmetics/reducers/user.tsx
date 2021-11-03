@@ -7,6 +7,7 @@ export interface IUserState {
   loginError: any;
   isLoggedIn: boolean;
   userData: any;
+  basket: any;
 }
 
 // 초기 상태
@@ -16,6 +17,7 @@ const initialState: IUserState = {
   loginError: null,
   isLoggedIn: false,
   userData: null,
+  basket: null,
 };
 
 // 리듀서 슬라이스
@@ -46,5 +48,10 @@ const userSlice = createSlice({
 
 // 리듀서 & 액션 리턴
 const { reducer, actions } = userSlice;
-export const { USER_LOGIN_REQUEST, USER_LOGOUT_REQUEST } = actions;
+export const {
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAILURE,
+  USER_LOGOUT_REQUEST,
+} = actions;
 export default reducer;

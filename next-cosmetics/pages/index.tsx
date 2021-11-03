@@ -1,11 +1,10 @@
 import type { NextPage } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainCarousel from "../src/components/MainCarousel";
-import { Row, Col, Container, Image } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { Button } from "react-bootstrap/";
 import MainGrid from "../src/components/MainGrid";
 import MainGridRes from "../src/components/MainGridRes";
-import Footer from "../src/components/Footer";
 const Home: NextPage = () => {
   return (
     <Container fluid style={{ padding: 0 }}>

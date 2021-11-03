@@ -40,7 +40,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
         });
       } catch (err) {
         store.dispatch({
-          type: GET_PRODUCT_LIST_FAILURE(),
+          type: GET_PRODUCT_LIST_FAILURE,
           payload: err,
         });
       }

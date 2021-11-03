@@ -6,13 +6,15 @@ import user, { IUserState } from "./user";
 export type State = {
   user: IUserState;
   products: IProductsState;
+  server: any;
+  client: any;
 };
 
 const rootReducer = (state: State | undefined, action: AnyAction) => {
   switch (action.type) {
     case HYDRATE:
-      return action.payload;
-
+      console.log("HYDRATE");
+      return { ...state, ...action.payload };
     default: {
       const combineReducer = combineReducers({
         user,

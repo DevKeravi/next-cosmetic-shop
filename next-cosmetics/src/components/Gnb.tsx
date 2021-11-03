@@ -12,9 +12,18 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
 import styled from "styled-components";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_FAILURE,
+  USER_LOGIN_SUCCESS,
+  USER_LOGOUT_REQUEST,
+} from "../../reducers/user";
+import axios from "axios";
+import wrapper from "../../store/configureStore";
 
 const LinkItem = styled(Nav.Link)`
   margin-left: 2vw;
@@ -23,6 +32,22 @@ const LinkItem = styled(Nav.Link)`
 
 const Gnb = () => {
   const [toogleModal, setToogleModal] = useState(false);
+  const { userData, isLoggedIn } = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
+
+  const handleLogin = useCallback(async () => {
+    dispatch({ type: USER_LOGIN_REQUEST.type });
+    try {
+      const resp = await axios.get("http://localhost:3000/api/login");
+      dispatch({ type: USER_LOGIN_SUCCESS.type, payload: resp.data });
+      setToogleModal(false);
+    } catch (error) {
+      dispatch({ type: USER_LOGIN_FAILURE.type, payload: error });
+    }
+  }, []);
+  const handleLogout = useCallback(async () => {
+    dispatch({ type: USER_LOGOUT_REQUEST.type });
+  }, []);
   return (
     <>
       <Navbar
@@ -54,11 +79,11 @@ const Gnb = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Link href="/eye" passHref>
-                <LinkItem>Eye</LinkItem>
-              </Link>
               <Link href="/lip" passHref>
                 <LinkItem>Lip</LinkItem>
+              </Link>
+              <Link href="/eye" passHref>
+                <LinkItem>Eye</LinkItem>
               </Link>
               <Link href="/cheek" passHref>
                 <LinkItem>Cheek</LinkItem>
@@ -69,21 +94,37 @@ const Gnb = () => {
               <Link href="/about" passHref>
                 <LinkItem>About</LinkItem>
               </Link>
+              <Link href="/test" passHref>
+                <LinkItem>test</LinkItem>
+              </Link>
             </Nav>
             <Nav>
-              <LinkItem
-                eventKey={2}
-                onClick={() => {
-                  setToogleModal(true);
-                }}
-              >
+              <LinkItem eventKey={2}>
                 <FaUserTie style={{ marginRight: "0.5vw" }} />
-                Log In
+                {isLoggedIn ? (
+                  <span>
+                    Hi, {userData?.nickName} (
+                    <span style={{ color: "orange" }} onClick={handleLogout}>
+                      logout
+                    </span>
+                    )
+                  </span>
+                ) : (
+                  <span
+                    onClick={() => {
+                      setToogleModal(true);
+                    }}
+                  >
+                    Log In
+                  </span>
+                )}
               </LinkItem>
-              <LinkItem href="#deets">
-                <BsFillHandbagFill style={{ marginRight: "0.5vw" }} />
-                Basket (0)
-              </LinkItem>
+              <Link href="/basket" passHref>
+                <LinkItem>
+                  <BsFillHandbagFill style={{ marginRight: "0.5vw" }} />
+                  Basket ({userData === null ? "0" : userData.basket.length})
+                </LinkItem>
+              </Link>
             </Nav>
             <AiOutlineSearch
               style={{
@@ -173,6 +214,7 @@ const Gnb = () => {
                             border: "1px solid orange",
                             marginBottom: "0.6rem",
                           }}
+                          onClick={handleLogin}
                         >
                           LOG IN
                         </Button>

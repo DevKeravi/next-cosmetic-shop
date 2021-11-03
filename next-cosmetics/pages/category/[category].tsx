@@ -161,12 +161,15 @@ const category = () => {
                   backgroundColor: "white",
                   color: "black",
                   border: "1px solid",
+                  boxShadow: "none",
+                  borderRadius: "0",
                 }
               : {
                   marginRight: "1rem",
                   backgroundColor: "black",
                   color: "white",
                   border: "1px solid",
+                  borderRadius: "0",
                 }
           }
           id={i.toString()}
@@ -334,9 +337,9 @@ const category = () => {
                 <span style={{ marginRight: "10vw" }}>Colour</span>
               </Dropdown.Toggle>
               <Dropdown.Menu style={{ border: "none" }}>
-                {colorList.map((v: any) => (
+                {colorList.map((v: any, i: number) => (
                   <Dropdown.Item
-                    key={v.hex_value}
+                    key={i}
                     id={v.hex_value}
                     style={{
                       backgroundColor: v.hex_value,
