@@ -46,6 +46,7 @@ const Gnb = () => {
     }
   }, []);
   const handleLogout = useCallback(async () => {
+    await axios.get("http://localhost:3000/api/logout");
     dispatch({ type: USER_LOGOUT_REQUEST.type });
   }, []);
   return (
@@ -93,9 +94,6 @@ const Gnb = () => {
               </Link>
               <Link href="/about" passHref>
                 <LinkItem>About</LinkItem>
-              </Link>
-              <Link href="/test" passHref>
-                <LinkItem>test</LinkItem>
               </Link>
             </Nav>
             <Nav>

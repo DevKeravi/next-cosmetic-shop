@@ -5,6 +5,9 @@ import { Row, Col, Container } from "react-bootstrap";
 import { Button } from "react-bootstrap/";
 import MainGrid from "../src/components/MainGrid";
 import MainGridRes from "../src/components/MainGridRes";
+import axios from "axios";
+import { USER_LOGIN_SUCCESS } from "../reducers/user";
+import wrapper from "../store/configureStore";
 const Home: NextPage = () => {
   return (
     <Container fluid style={{ padding: 0 }}>
@@ -94,4 +97,19 @@ const Home: NextPage = () => {
   );
 };
 
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ req, res }) => {
+      const cookie = req ? req.headers.cookie : "";
+      if (cookie !== undefined) {
+        const resp = await axios.get("http://localhost:3000/api/login");
+        store.dispatch({
+          type: USER_LOGIN_SUCCESS.type,
+          payload: resp.data,
+        });
+      }
+
+      return { props: {} };
+    }
+);
 export default Home;

@@ -108,7 +108,7 @@ const userData = {
 };
 
 export default (req: any, res: any) => {
-  const token = "fake token string";
+  const token = "tempToken";
   res.setHeader("Set-Cookie", `token=${token}; path=/;`);
   res.status(200).json(userData);
 };

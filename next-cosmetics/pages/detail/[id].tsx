@@ -104,14 +104,20 @@ const detail = () => {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ res, req, params }) => {
-      store.dispatch({ type: GET_PRODUCT_BY_ID_REQUEST });
+      store.dispatch({ type: GET_PRODUCT_BY_ID_REQUEST.type });
       try {
         const resp = await axios.get(
           `http://makeup-api.herokuapp.com/api/v1/products/${params?.id}.json`
         );
-        store.dispatch({ type: GET_PRODUCT_BY_ID_SUCCESS, payload: resp.data });
+        store.dispatch({
+          type: GET_PRODUCT_BY_ID_SUCCESS.type,
+          payload: resp.data,
+        });
       } catch (error) {
-        store.dispatch({ type: GET_PRODUCT_BY_ID_FAILURE, payload: error });
+        store.dispatch({
+          type: GET_PRODUCT_BY_ID_FAILURE.type,
+          payload: error,
+        });
       }
       return {
         props: {},

@@ -1,4 +1,7 @@
+import axios from "axios";
 import { Container, Row, Col, Image } from "react-bootstrap";
+import { USER_LOGIN_SUCCESS } from "../reducers/user";
+import wrapper from "../store/configureStore";
 
 const about = () => {
   return (
@@ -109,4 +112,19 @@ const about = () => {
   );
 };
 
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ req, res }) => {
+      const cookie = req ? req.headers.cookie : "";
+      if (cookie !== undefined) {
+        const resp = await axios.get("http://localhost:3000/api/login");
+        store.dispatch({
+          type: USER_LOGIN_SUCCESS.type,
+          payload: resp.data,
+        });
+      }
+
+      return { props: {} };
+    }
+);
 export default about;

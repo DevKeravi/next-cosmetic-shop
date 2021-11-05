@@ -408,19 +408,19 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ req, res, params }) => {
       store.dispatch({
-        type: GET_PRODUCT_LIST_BY_CATEGORY_REQUEST,
+        type: GET_PRODUCT_LIST_BY_CATEGORY_REQUEST.type,
       });
       try {
         const resp = await axios.get(
           defaultUrl + `&product_type=${params?.category}`
         );
         store.dispatch({
-          type: GET_PRODUCT_LIST_BY_CATEGORY_SUCCESS,
+          type: GET_PRODUCT_LIST_BY_CATEGORY_SUCCESS.type,
           payload: resp.data,
         });
       } catch (error) {
         store.dispatch({
-          type: GET_PRODUCT_LIST_BY_CATEGORY_FAILURE,
+          type: GET_PRODUCT_LIST_BY_CATEGORY_FAILURE.type,
           payload: error,
         });
       }
