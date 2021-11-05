@@ -4,13 +4,13 @@ import ImgOverlayCard, { OverlayCardProps } from "./ImgOverlayCard";
 const ImgProps: OverlayCardProps[] = [
   {
     key: "card1",
-    src: "http://placehold.it/300x600",
+    src: "http://placeimg.com/300/600/tech/grayscale",
     title: ["HEATHER", "GREY BASICS"],
     desc: ["NEW ARRIVAL"],
   },
   {
     key: "card2",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/animals/grayscale",
     desc: [
       "Opening Ceremony",
       "@IndonesiaFW tomorrow",
@@ -21,33 +21,33 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card3",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/architecture/grayscale",
     title: ["CHUCK TAYLORS"],
     desc: ["$125.00"],
   },
   {
     key: "card4",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/nature/grayscale",
   },
   {
     key: "card5",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/nature/grayscale",
     title: ["JAXON HAT"],
     desc: ["BEANIE HAT"],
   },
   {
     key: "card6",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/any/grayscale",
   },
   {
     key: "card7",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/any/grayscale",
     title: ["ELEGANT SHOES"],
     desc: ["BRAIDED LEATHER"],
   },
   {
     key: "card8",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/nature/grayscale",
     desc: [
       "Girls, Girls, Girls: A Look",
       "Back at 50 Years of the",
@@ -57,13 +57,13 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card9",
-    src: "http://placehold.it/300x300",
+    src: "http://placeimg.com/300/300/tech/grayscale",
     title: ["BASIC BLAZER"],
     desc: ["FROM $199.00"],
   },
   {
     key: "card10",
-    src: "http://placehold.it/300x600",
+    src: "http://placeimg.com/300/600/people/grayscale",
     title: ["JEANS FOR", "ADVENTURE"],
     desc: ["NEW ARRIVAL"],
   },
