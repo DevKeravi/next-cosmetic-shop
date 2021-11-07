@@ -7,7 +7,6 @@ export interface IUserState {
   loginError: any;
   isLoggedIn: boolean;
   userData: any;
-  basket: any;
 }
 
 // 초기 상태
@@ -17,7 +16,6 @@ const initialState: IUserState = {
   loginError: null,
   isLoggedIn: false,
   userData: null,
-  basket: null,
 };
 
 // 리듀서 슬라이스

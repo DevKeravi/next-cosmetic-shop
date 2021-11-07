@@ -2,10 +2,12 @@ import axios from "axios";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
+import ShoppingBagTable from "../src/components/ShoppingBagTable";
 import wrapper from "../store/configureStore";
 
 const basket = () => {
   const { userData } = useSelector((state: any) => state.user);
+  const basketList = userData.basket;
 
   if (userData === null) {
     return (
@@ -18,9 +20,22 @@ const basket = () => {
   }
 
   return (
-    <Container>
-      <Row>
-        <Col></Col>
+    <Container fluid>
+      <Row className="g-0">
+        <Col>
+          <Row className="g-0">
+            <Col className="basketTitle" style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "2rem" }}>YOUR SHOPPING BAG</div>
+              <div style={{ color: "grey", fontStyle: "italic" }}>
+                Items reserved for limited time only
+              </div>
+            </Col>
+          </Row>
+          <Row className="g-0 bagTable">
+            <ShoppingBagTable bagList={basketList} />
+          </Row>
+          <Row className="g-0 oderButtons"></Row>
+        </Col>
       </Row>
     </Container>
   );
