@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
 import ShoppingBagTable from "../src/components/ShoppingBagTable";
@@ -22,9 +22,12 @@ const basket = () => {
   return (
     <Container fluid>
       <Row className="g-0">
-        <Col>
+        <Col style={{ marginTop: "3vmax" }}>
           <Row className="g-0">
-            <Col className="basketTitle" style={{ textAlign: "center" }}>
+            <Col
+              className="basketTitle"
+              style={{ textAlign: "center", marginBottom: "4rem" }}
+            >
               <div style={{ fontSize: "2rem" }}>YOUR SHOPPING BAG</div>
               <div style={{ color: "grey", fontStyle: "italic" }}>
                 Items reserved for limited time only
@@ -34,7 +37,42 @@ const basket = () => {
           <Row className="g-0 bagTable">
             <ShoppingBagTable bagList={basketList} />
           </Row>
-          <Row className="g-0 oderButtons"></Row>
+          <Row className="g-0 oderButtons" style={{ marginTop: "1.5rem" }}>
+            <Col
+              className="d-none d-lg-block"
+              lg={2}
+              md={12}
+              style={{ textDecoration: "underline" }}
+            >
+              Continue Shopping
+            </Col>
+            <Col
+              className="d-block d-lg-none"
+              lg={2}
+              md={12}
+              style={{
+                textDecoration: "underline",
+                textAlign: "center",
+                marginBottom: "2rem",
+              }}
+            >
+              Continue Shopping
+            </Col>
+            <Col className="offset-lg-8" lg={2} md={12}>
+              <div className="d-grid">
+                <Button
+                  style={{
+                    backgroundColor: "orange",
+                    borderRadius: 0,
+                    border: "none",
+                  }}
+                  size="lg"
+                >
+                  ODER NOW
+                </Button>
+              </div>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>

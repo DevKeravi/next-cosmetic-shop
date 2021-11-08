@@ -1,8 +1,9 @@
 const basketData = [
   {
     id: 670,
+    qty: 2,
     brand: "dior",
-    name: "DIORIFIC MATTE FLUID - Christmas Look 2017 Limited Edition",
+    name: "DIORIFIC MATTE FLUID ",
     price: "27.5",
     price_sign: "£",
     currency: "GBP",
@@ -36,7 +37,8 @@ const basketData = [
   {
     id: 682,
     brand: "dior",
-    name: "Diorskin Nude Air Glow Powder",
+    qty: 1,
+    name: "Diorskin Nude Powder",
     price: "39.5",
     price_sign: "£",
     currency: "GBP",
@@ -73,6 +75,7 @@ const basketData = [
   },
   {
     id: 717,
+    qty: 2,
     brand: "dior",
     name: "All-In-Brow 3D",
     price: "43.0",
