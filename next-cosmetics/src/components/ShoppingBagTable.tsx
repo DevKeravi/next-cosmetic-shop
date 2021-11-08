@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button, Col, Container, Image, Row, Table } from "react-bootstrap";
 import {
   BsFillArrowUpSquareFill,
@@ -21,6 +21,15 @@ interface bagProps {
 
 const ShoppingBagTable = ({ bagList }: bagProps) => {
   const dispatch = useDispatch();
+  const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    var temp = 0;
+    bagList.map((v: any) => {
+      temp += parseInt(v.price);
+    });
+    setSubtotal(temp);
+  }, [bagList]);
 
   const qtyHandler = useCallback(async (id: string, value: number) => {
     // 예외 처리
@@ -71,7 +80,7 @@ const ShoppingBagTable = ({ bagList }: bagProps) => {
   return (
     <Container>
       <Row className="g-0 fullsize d-none d-lg-block">
-        <Table responsive borderless>
+        <Table responsive borderless style={{ marginBottom: 0 }}>
           <thead
             style={{
               color: "#999999",
@@ -297,6 +306,34 @@ const ShoppingBagTable = ({ bagList }: bagProps) => {
             </Col>
           </Row>
         ))}
+      </Row>
+      <Row className="g-0">
+        <Col
+          style={{
+            backgroundColor: "#f9f9f9",
+            textAlign: "right",
+            padding: "1rem",
+            marginBottom: "1rem",
+          }}
+          className="d-none d-lg-block"
+        >
+          <span style={{ marginRight: "4rem" }}> Subtotal:</span>{" "}
+          <span style={{ marginRight: "2rem", color: "orange" }}>
+            ${subtotal}
+          </span>
+        </Col>
+        <Col
+          style={{
+            backgroundColor: "#f9f9f9",
+            textAlign: "center",
+            padding: "1rem",
+            marginBottom: "1rem",
+          }}
+          className="d-block d-lg-none"
+        >
+          <span> Subtotal:</span>{" "}
+          <span style={{ color: "orange" }}>${subtotal}</span>
+        </Col>
       </Row>
     </Container>
   );

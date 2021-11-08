@@ -65,10 +65,14 @@ const basket = () => {
                     backgroundColor: "orange",
                     borderRadius: 0,
                     border: "none",
+                    paddingTop: "0.8rem",
+                    paddingBottom: "0.8rem",
+                    paddingLeft: "0",
+                    paddingRight: "0",
                   }}
                   size="lg"
                 >
-                  ODER NOW
+                  <span style={{ fontSize: "0.95rem" }}>ORDER NOW</span>
                 </Button>
               </div>
             </Col>
