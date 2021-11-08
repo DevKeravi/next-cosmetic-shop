@@ -102,7 +102,7 @@ const Gnb = () => {
                 {isLoggedIn ? (
                   <span>
                     Hi, {userData?.nickName} (
-                    <span style={{ color: "orange" }} onClick={handleLogout}>
+                    <span style={{ color: "#f68236" }} onClick={handleLogout}>
                       logout
                     </span>
                     )
@@ -206,10 +206,10 @@ const Gnb = () => {
                           style={{
                             width: "200px",
                             height: "50px",
-                            backgroundColor: "orange",
+                            backgroundColor: "#f68236",
                             borderRadius: "0",
                             boxShadow: "none",
-                            border: "1px solid orange",
+                            border: "1px solid #f68236",
                             marginBottom: "0.6rem",
                           }}
                           onClick={handleLogin}
@@ -220,7 +220,7 @@ const Gnb = () => {
                       <Col
                         style={{
                           textAlign: "center",
-                          color: "orange",
+                          color: "#f68236",
                           fontSize: "0.8rem",
                         }}
                       >

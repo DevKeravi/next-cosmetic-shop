@@ -21,12 +21,12 @@ interface bagProps {
 
 const ShoppingBagTable = ({ bagList }: bagProps) => {
   const dispatch = useDispatch();
-  const [subtotal, setSubtotal] = useState(0);
+  const [subtotal, setSubtotal] = useState(0.0);
 
   useEffect(() => {
     var temp = 0;
     bagList.map((v: any) => {
-      temp += parseInt(v.price);
+      temp += parseFloat(v.price) * v.qty;
     });
     setSubtotal(temp);
   }, [bagList]);
@@ -318,8 +318,8 @@ const ShoppingBagTable = ({ bagList }: bagProps) => {
           className="d-none d-lg-block"
         >
           <span style={{ marginRight: "4rem" }}> Subtotal:</span>{" "}
-          <span style={{ marginRight: "2rem", color: "orange" }}>
-            ${subtotal}
+          <span style={{ marginRight: "2rem", color: "#f68236" }}>
+            ${subtotal.toFixed(1)}
           </span>
         </Col>
         <Col
@@ -332,7 +332,7 @@ const ShoppingBagTable = ({ bagList }: bagProps) => {
           className="d-block d-lg-none"
         >
           <span> Subtotal:</span>{" "}
-          <span style={{ color: "orange" }}>${subtotal}</span>
+          <span style={{ color: "#f68236" }}>${subtotal}</span>
         </Col>
       </Row>
     </Container>

@@ -1,9 +1,18 @@
 import axios from "axios";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
+import LookCarousel from "../src/components/LookCarousel";
 import wrapper from "../store/configureStore";
 
 const about = () => {
+  var randomImage = [];
+  for (var i = 0; i < 2; i++) {
+    randomImage.push(
+      `https://source.unsplash.com/random/1200x600?sig=${Math.floor(
+        Math.random() * 10000
+      )}`
+    );
+  }
   return (
     <Container fluid style={{ marginTop: "2rem", marginBottom: "5rem" }}>
       <Row className="g-0">
@@ -24,11 +33,7 @@ const about = () => {
           </Row>
           <Row className="g-4">
             <Col lg={6} xs={12}>
-              <Image
-                src="http://placehold.it/1200x600"
-                alt="WHO WE ARE"
-                fluid
-              />
+              <Image src={randomImage[0]} alt="WHO WE ARE" fluid />
               <Row
                 className="g-0"
                 style={{ marginTop: "2rem", marginBottom: "1rem" }}
@@ -65,11 +70,7 @@ const about = () => {
               </Row>
             </Col>
             <Col lg={6} xs={12}>
-              <Image
-                src="http://placehold.it/1200x600"
-                alt="WHO WE ARE"
-                fluid
-              />
+              <Image src={randomImage[1]} alt="WHO WE ARE" fluid />
               <Row
                 className="g-0"
                 style={{ marginTop: "2rem", marginBottom: "1rem" }}
@@ -107,6 +108,9 @@ const about = () => {
             </Col>
           </Row>
         </Col>
+      </Row>
+      <Row>
+        <LookCarousel />
       </Row>
     </Container>
   );

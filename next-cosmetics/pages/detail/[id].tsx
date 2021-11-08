@@ -7,6 +7,7 @@ import {
 } from "../../reducers/products";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import LookCarousel from "../../src/components/LookCarousel";
 
 const detail = () => {
   const { productDetail } = useSelector((state: any) => state.products);
@@ -96,6 +97,9 @@ const detail = () => {
             </Button>
           </div>
         </Col>
+      </Row>
+      <Row>
+        <LookCarousel />
       </Row>
     </Container>
   );

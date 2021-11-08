@@ -81,7 +81,7 @@ const Home: NextPage = () => {
               aria-describedby="basic-addon2"
             />
             <span>
-              <Button style={{ backgroundColor: "orange", border: "0px" }}>
+              <Button style={{ backgroundColor: "#f68236", border: "0px" }}>
                 add
               </Button>
             </span>

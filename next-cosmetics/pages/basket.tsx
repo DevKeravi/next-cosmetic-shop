@@ -1,13 +1,18 @@
 import axios from "axios";
+import { useState } from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
+import LineCutter from "../src/components/LineCutter";
+import PaymentOpt from "../src/components/PaymentOpt";
+import ShippingAddr from "../src/components/ShippingAddr";
 import ShoppingBagTable from "../src/components/ShoppingBagTable";
 import wrapper from "../store/configureStore";
 
 const basket = () => {
   const { userData } = useSelector((state: any) => state.user);
   const basketList = userData.basket;
+  const [toggle, setToggle] = useState(false);
 
   if (userData === null) {
     return (
@@ -37,48 +42,65 @@ const basket = () => {
           <Row className="g-0 bagTable">
             <ShoppingBagTable bagList={basketList} />
           </Row>
-          <Row className="g-0 oderButtons" style={{ marginTop: "1.5rem" }}>
-            <Col
-              className="d-none d-lg-block"
-              lg={2}
-              md={12}
-              style={{ textDecoration: "underline" }}
-            >
-              Continue Shopping
-            </Col>
-            <Col
-              className="d-block d-lg-none"
-              lg={2}
-              md={12}
-              style={{
-                textDecoration: "underline",
-                textAlign: "center",
-                marginBottom: "2rem",
-              }}
-            >
-              Continue Shopping
-            </Col>
-            <Col className="offset-lg-8" lg={2} md={12}>
-              <div className="d-grid">
-                <Button
-                  style={{
-                    backgroundColor: "orange",
-                    borderRadius: 0,
-                    border: "none",
-                    paddingTop: "0.8rem",
-                    paddingBottom: "0.8rem",
-                    paddingLeft: "0",
-                    paddingRight: "0",
-                  }}
-                  size="lg"
-                >
-                  <span style={{ fontSize: "0.95rem" }}>ORDER NOW</span>
-                </Button>
-              </div>
-            </Col>
-          </Row>
         </Col>
       </Row>
+      {toggle ? null : (
+        <Row className="g-0 oderButtons" style={{ marginTop: "1.5rem" }}>
+          <Col
+            className="d-none d-lg-block"
+            lg={2}
+            md={12}
+            style={{ textDecoration: "underline" }}
+          >
+            Continue Shopping
+          </Col>
+          <Col
+            className="d-block d-lg-none"
+            lg={2}
+            md={12}
+            style={{
+              textDecoration: "underline",
+              textAlign: "center",
+              marginBottom: "2rem",
+            }}
+          >
+            Continue Shopping
+          </Col>
+          <Col className="offset-lg-8" lg={2} md={12}>
+            <div className="d-grid">
+              <Button
+                style={{
+                  backgroundColor: "orange",
+                  borderRadius: 0,
+                  border: "none",
+                  paddingTop: "0.8rem",
+                  paddingBottom: "0.8rem",
+                  paddingLeft: "0",
+                  paddingRight: "0",
+                }}
+                size="lg"
+                onClick={() => {
+                  setToggle(true);
+                }}
+              >
+                <span style={{ fontSize: "0.95rem" }}>ORDER NOW</span>
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      )}
+      {!toggle ? null : (
+        <Row className="g-0 shippingAddress">
+          <LineCutter />
+          <ShippingAddr />
+        </Row>
+      )}
+      {!toggle ? null : (
+        <Row className="g-0 billing">
+          <LineCutter />
+          <PaymentOpt />
+        </Row>
+      )}
     </Container>
   );
 };

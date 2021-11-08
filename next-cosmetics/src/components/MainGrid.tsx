@@ -4,13 +4,13 @@ import ImgOverlayCard, { OverlayCardProps } from "./ImgOverlayCard";
 const ImgProps: OverlayCardProps[] = [
   {
     key: "card1",
-    src: "http://placeimg.com/300/600/tech/grayscale",
+    src: "/longlip.png",
     title: ["HEATHER", "GREY BASICS"],
     desc: ["NEW ARRIVAL"],
   },
   {
     key: "card2",
-    src: "http://placeimg.com/300/300/animals/grayscale",
+    src: "http://placeimg.com/300/300/animals",
     desc: [
       "Opening Ceremony",
       "@IndonesiaFW tomorrow",
@@ -21,33 +21,33 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card3",
-    src: "http://placeimg.com/300/300/architecture/grayscale",
+    src: "http://placeimg.com/300/300/architecture",
     title: ["CHUCK TAYLORS"],
     desc: ["$125.00"],
   },
   {
     key: "card4",
-    src: "http://placeimg.com/300/300/nature/grayscale",
+    src: "lip.png",
   },
   {
     key: "card5",
-    src: "http://placeimg.com/300/300/nature/grayscale",
+    src: "http://placeimg.com/300/300/nature",
     title: ["JAXON HAT"],
     desc: ["BEANIE HAT"],
   },
   {
     key: "card6",
-    src: "http://placeimg.com/300/300/any/grayscale",
+    src: "/palett.png",
   },
   {
     key: "card7",
-    src: "http://placeimg.com/300/300/any/grayscale",
+    src: "http://placeimg.com/300/300/any",
     title: ["ELEGANT SHOES"],
     desc: ["BRAIDED LEATHER"],
   },
   {
     key: "card8",
-    src: "http://placeimg.com/300/300/nature/grayscale",
+    src: "/mirror.png",
     desc: [
       "Girls, Girls, Girls: A Look",
       "Back at 50 Years of the",
@@ -57,13 +57,13 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card9",
-    src: "http://placeimg.com/300/300/tech/grayscale",
+    src: "http://placeimg.com/300/300/tech",
     title: ["BASIC BLAZER"],
     desc: ["FROM $199.00"],
   },
   {
     key: "card10",
-    src: "http://placeimg.com/300/600/people/grayscale",
+    src: "http://placeimg.com/300/600/people",
     title: ["JEANS FOR", "ADVENTURE"],
     desc: ["NEW ARRIVAL"],
   },

@@ -78,13 +78,8 @@ const Footer = () => {
   return (
     <Container style={{ marginTop: "4vmax" }}>
       <Row>
-        <Row>
-          <Col
-            className="d-sm-block d-lg-none"
-            style={{ marginBottom: "1rem" }}
-          >
-            <hr />
-          </Col>
+        <Row className="d-block d-lg-none" style={{ marginBottom: "1rem" }}>
+          <div style={{ border: "1px solid #e5e5e5" }}></div>
         </Row>
         <Col
           className="d-none d-lg-block"
@@ -126,7 +121,7 @@ const Footer = () => {
                   style={{
                     fontSize: "2.2rem",
                     padding: "0.5rem",
-                    border: "1px solid",
+                    border: "1px solid grey",
                     marginRight: "1rem",
                   }}
                 />
@@ -134,7 +129,7 @@ const Footer = () => {
                   style={{
                     fontSize: "2.2rem",
                     padding: "0.5rem",
-                    border: "1px solid",
+                    border: "1px solid grey",
                     marginRight: "1rem",
                   }}
                 />
@@ -142,7 +137,7 @@ const Footer = () => {
                   style={{
                     fontSize: "2.2rem",
                     padding: "0.5rem",
-                    border: "1px solid",
+                    border: "1px solid grey",
                   }}
                 />
               </Col>
@@ -178,7 +173,7 @@ const Footer = () => {
                   style={{
                     fontSize: "2rem",
                     padding: "0.5rem",
-                    border: "1px solid",
+                    border: "1px solid grey",
                     marginRight: "1rem",
                   }}
                 />
@@ -186,7 +181,7 @@ const Footer = () => {
                   style={{
                     fontSize: "2rem",
                     padding: "0.5rem",
-                    border: "1px solid",
+                    border: "1px solid grey",
                     marginRight: "1rem",
                   }}
                 />
@@ -194,7 +189,7 @@ const Footer = () => {
                   style={{
                     fontSize: "2rem",
                     padding: "0.5rem",
-                    border: "1px solid",
+                    border: "1px solid grey",
                   }}
                 />
               </Col>

@@ -9,6 +9,7 @@ import {
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
 import ProductCard from "../src/components/ProductCard";
 import wrapper from "../store/configureStore";
+import LookCarousel from "../src/components/LookCarousel";
 
 const cheek = () => {
   const { productList } = useSelector((state: RootState) => state.products);
@@ -23,6 +24,7 @@ const cheek = () => {
     <>
       <ProductCard productList={blush.slice(0, 4)} />
       <ProductCard productList={bronzer.slice(0, 4)} />
+      <LookCarousel />
     </>
   );
 };

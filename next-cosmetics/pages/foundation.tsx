@@ -7,6 +7,7 @@ import {
   GET_PRODUCT_LIST_SUCCESS,
 } from "../reducers/products";
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
+import LookCarousel from "../src/components/LookCarousel";
 import ProductCard from "../src/components/ProductCard";
 import wrapper from "../store/configureStore";
 
@@ -19,6 +20,7 @@ const foundation = () => {
   return (
     <>
       <ProductCard productList={foundation.slice(0, 4)} />
+      <LookCarousel />
     </>
   );
 };
