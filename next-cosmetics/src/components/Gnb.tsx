@@ -29,6 +29,18 @@ const LinkItem = styled(Nav.Link)`
   margin-left: 2vw;
   margin-right: 2vw;
 `;
+const NavbarWrapper = styled(Navbar)`
+  button {
+    background-color: #8d8d8d;
+    border: none;
+    padding: 0.8rem;
+    color: white;
+    border-radius: 0;
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  }
+`;
 
 const Gnb = () => {
   const [toogleModal, setToogleModal] = useState(false);
@@ -51,7 +63,7 @@ const Gnb = () => {
   }, []);
   return (
     <>
-      <Navbar
+      <NavbarWrapper
         collapseOnSelect
         expand="lg"
         style={{
@@ -77,11 +89,19 @@ const Gnb = () => {
               </div>
             </Navbar.Brand>
           </Link>
+          <BsFillHandbagFill
+            className="d-block d-md-none"
+            style={{ position: "absolute", fontSize: "1.8rem", left: "70%" }}
+          />
+          <BsFillHandbagFill
+            className="d-md-block d-lg-none d-none"
+            style={{ position: "absolute", fontSize: "1.8rem", left: "80%" }}
+          />
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Link href="/lip" passHref>
-                <LinkItem>Lip/Nail</LinkItem>
+                <LinkItem>Lip</LinkItem>
               </Link>
               <Link href="/eye" passHref>
                 <LinkItem>Eye</LinkItem>
@@ -133,7 +153,7 @@ const Gnb = () => {
             />
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </NavbarWrapper>
       <Modal fullscreen show={toogleModal} onHide={() => setToogleModal(false)}>
         <Modal.Body
           style={{ backgroundColor: "#e5e5e5" }}

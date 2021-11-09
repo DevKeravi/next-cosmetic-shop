@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/dist/client/router";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
 import {
@@ -10,8 +11,11 @@ import { USER_LOGIN_SUCCESS } from "../reducers/user";
 import LookCarousel from "../src/components/LookCarousel";
 import ProductCard from "../src/components/ProductCard";
 import wrapper from "../store/configureStore";
+import Bread from "../src/components/Bread";
 
 const foundation = () => {
+  const router = useRouter();
+  const list = [`${router.pathname}`];
   const { productList } = useSelector((state: RootState) => state.products);
   const foundation = productList.filter((v: any) => {
     return v.product_type === "foundation";
@@ -19,8 +23,10 @@ const foundation = () => {
 
   return (
     <>
+      <Bread link={list} />
+
       <ProductCard productList={foundation.slice(0, 4)} />
-      <LookCarousel />
+      <LookCarousel title="Check our lookbook" />
     </>
   );
 };

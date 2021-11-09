@@ -8,6 +8,8 @@ import {
   FloatingLabel,
 } from "react-bootstrap";
 import styled from "styled-components";
+import Bread from "../src/components/Bread";
+import LookCarousel from "../src/components/LookCarousel";
 
 const FormLabel = styled(Form.Label)`
   color: grey;
@@ -61,6 +63,7 @@ const contact = () => {
 
   return (
     <Container style={{ marginBottom: "4vw" }}>
+      <Bread link={[`/contact`]} />
       <Row
         className="g-0"
         style={{ textAlign: "center", fontSize: "2rem", marginTop: "5rem" }}
@@ -169,6 +172,9 @@ const contact = () => {
           </Col>
         </Row>
       </Form>
+      <Row className="g-0">
+        <LookCarousel title="You may also like" />
+      </Row>
     </Container>
   );
 };

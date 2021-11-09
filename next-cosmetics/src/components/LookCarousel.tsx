@@ -1,5 +1,8 @@
 import { Carousel, Container, Row, Col } from "react-bootstrap";
-const LookCarousel = () => {
+interface lookProps {
+  title: string;
+}
+const LookCarousel = ({ title }: lookProps) => {
   var randomImage = [];
   for (var i = 0; i < 3; i++) {
     randomImage.push(
@@ -27,7 +30,7 @@ const LookCarousel = () => {
           color: "grey",
         }}
       >
-        <Col>You may also like</Col>
+        <Col>{title}</Col>
       </Row>
       <Row>
         <Col>

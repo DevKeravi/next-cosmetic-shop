@@ -10,8 +10,12 @@ import { USER_LOGIN_SUCCESS } from "../reducers/user";
 import ProductCard from "../src/components/ProductCard";
 import wrapper from "../store/configureStore";
 import LookCarousel from "../src/components/LookCarousel";
+import Bread from "../src/components/Bread";
+import { useRouter } from "next/dist/client/router";
 
 const cheek = () => {
+  const router = useRouter();
+  const list = [`${router.pathname}`];
   const { productList } = useSelector((state: RootState) => state.products);
   const blush = productList.filter((v: any) => {
     return v.product_type === "blush";
@@ -22,9 +26,10 @@ const cheek = () => {
 
   return (
     <>
+      <Bread link={list} />
       <ProductCard productList={blush.slice(0, 4)} />
       <ProductCard productList={bronzer.slice(0, 4)} />
-      <LookCarousel />
+      <LookCarousel title="Check our lookbook" />
     </>
   );
 };

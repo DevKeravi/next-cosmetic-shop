@@ -15,6 +15,7 @@ import { useRouter } from "next/dist/client/router";
 
 const eye = () => {
   const router = useRouter();
+  const list = [`${router.pathname}`];
   const { productList } = useSelector((state: RootState) => state.products);
   const eyeshadow = productList.filter((v: any) => {
     return v.product_type === "eyeliner";
@@ -28,11 +29,11 @@ const eye = () => {
 
   return (
     <>
-      <Bread link={router.pathname} />
+      <Bread link={list} />
       <ProductCard productList={eyebrow.slice(0, 4)} />
       <ProductCard productList={eyeshadow.slice(2, 6)} />
       <ProductCard productList={mascara.slice(2, 6)} />
-      <LookCarousel />
+      <LookCarousel title="Check our lookbook" />
     </>
   );
 };

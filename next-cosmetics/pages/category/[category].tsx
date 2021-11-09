@@ -16,14 +16,21 @@ import {
   Button,
   ButtonGroup,
   ButtonToolbar,
-  DropdownButton,
   Dropdown,
 } from "react-bootstrap";
 import Link from "next/link";
+import Bread from "../../src/components/Bread";
+import { useRouter } from "next/dist/client/router";
+import { categoryGenerator } from "../../utils/";
 
 //리팩토링 필요
 
 const category = () => {
+  const router = useRouter();
+
+  const category = categoryGenerator(router.query.category);
+
+  const link = [`/${category}`, `/${router.query.category}`];
   // 한페이지에 보여줄 컨텐츠 수
   const pageContentsLimit = 12;
   const [curPageIndex, setCurPageIndex] = useState(0);
@@ -197,215 +204,218 @@ const category = () => {
   };
 
   return (
-    <Container fluid style={{ marginTop: "2rem" }}>
-      <Row className="g-0">
+    <>
+      <Bread link={link} />
+      <Container fluid style={{ marginTop: "2rem" }}>
         <Row className="g-0">
-          <Col lg={12} style={{ textAlign: "center", fontSize: "2.8rem" }}>
-            {title}
-          </Col>
-        </Row>
-        <Row className="g-0" style={{ marginBottom: "2.5rem" }}>
-          <Col
+          <Row className="g-0">
+            <Col lg={12} style={{ textAlign: "center", fontSize: "2.8rem" }}>
+              {title}
+            </Col>
+          </Row>
+          <Row className="g-0" style={{ marginBottom: "2.5rem" }}>
+            <Col
+              style={{
+                textAlign: "center",
+                fontSize: "1.5rem",
+                fontStyle: "italic",
+                color: "grey",
+              }}
+            >
+              All products
+            </Col>
+          </Row>
+          <Row
+            className="mobileSort g-0 d-block d-lg-none"
+            style={{ justifyContent: "center", display: "flex" }}
+          >
+            <Col xs={12} style={{ textAlign: "center", marginBottom: "3rem" }}>
+              <Dropdown className="d-inline">
+                <Dropdown.Toggle
+                  style={{
+                    backgroundColor: "white",
+                    color: "grey",
+                    fontStyle: "italic",
+                    borderRadius: "0",
+                    boxShadow: "none",
+                    borderColor: "grey",
+                    minWidth: "80vw",
+                    textAlign: "left",
+                  }}
+                >
+                  <span style={{ marginRight: "70vw", fontSize: "1.3rem" }}>
+                    Sort
+                  </span>
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item>Price</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item>Color</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+          </Row>
+          <Row className="g-0 ">
+            {filteredList.map((v: any) => (
+              <Col
+                className="d-block d-lg-none"
+                xs={6}
+                key={v.id}
+                style={{ textAlign: "center" }}
+              >
+                <Row className="g-0">
+                  <Link href={`/detail/${v.id}`}>
+                    <Col>
+                      <Image
+                        src={v.image_link}
+                        alt={v.name}
+                        style={{
+                          maxWidth: "150px",
+                          maxHeight: "200px",
+                          minWidth: "150px",
+                          minHeight: "200px",
+                        }}
+                      />
+                    </Col>
+                  </Link>
+                </Row>
+                <Row className="g-0">
+                  <Col>{v.name}</Col>
+                </Row>
+                <Row className="g-0">
+                  <Col>$ {v.price}</Col>
+                </Row>
+              </Col>
+            ))}
+          </Row>
+          <Row
+            className="g-0 "
             style={{
-              textAlign: "center",
-              fontSize: "1.5rem",
-              fontStyle: "italic",
-              color: "grey",
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "2rem",
             }}
           >
-            All products
-          </Col>
-        </Row>
-        <Row
-          className="mobileSort g-0 d-block d-lg-none"
-          style={{ justifyContent: "center", display: "flex" }}
-        >
-          <Col xs={12} style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <Dropdown className="d-inline">
-              <Dropdown.Toggle
-                style={{
-                  backgroundColor: "white",
-                  color: "grey",
-                  fontStyle: "italic",
-                  borderRadius: "0",
-                  boxShadow: "none",
-                  borderColor: "grey",
-                  minWidth: "80vw",
-                  textAlign: "left",
-                }}
-              >
-                <span style={{ marginRight: "70vw", fontSize: "1.3rem" }}>
-                  Sort
-                </span>
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item>Price</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item>Color</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-        </Row>
-        <Row className="g-0 ">
-          {filteredList.map((v: any) => (
-            <Col
-              className="d-block d-lg-none"
-              xs={6}
-              key={v.id}
-              style={{ textAlign: "center" }}
-            >
-              <Row className="g-0">
-                <Link href={`/detail/${v.id}`}>
-                  <Col>
-                    <Image
-                      src={v.image_link}
-                      alt={v.name}
-                      style={{
-                        maxWidth: "150px",
-                        maxHeight: "200px",
-                        minWidth: "150px",
-                        minHeight: "200px",
-                      }}
-                    />
-                  </Col>
-                </Link>
-              </Row>
-              <Row className="g-0">
-                <Col>{v.name}</Col>
-              </Row>
-              <Row className="g-0">
-                <Col>$ {v.price}</Col>
-              </Row>
-            </Col>
-          ))}
-        </Row>
-        <Row
-          className="g-0 "
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "2rem",
-          }}
-        >
-          <Col
-            className=" d-none d-lg-block"
-            lg={2}
-            style={{ textAlign: "center" }}
-          >
-            <Dropdown className="d-inline ">
-              <Dropdown.Toggle
-                id="dropdown-autoclose-true"
-                style={{
-                  backgroundColor: "white",
-                  color: "grey",
-                  border: "none",
-                  borderBottom: "1px solid",
-                  fontStyle: "italic",
-                  textAlign: "left",
-                  borderRadius: "0",
-                  boxShadow: "none",
-                  minWidth: "10vw",
-                  maxWidth: "14vw",
-                }}
-              >
-                <span style={{ marginRight: "10vw" }}>Price</span>
-              </Dropdown.Toggle>
-              <Dropdown.Menu style={{ border: "none" }}>
-                {priceItems()}
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-          <Col
-            lg={2}
-            className=" d-none d-lg-block"
-            style={{ textAlign: "center" }}
-          >
-            <Dropdown className="d-inline ">
-              <Dropdown.Toggle
-                id="dropdown-autoclose-true"
-                style={{
-                  backgroundColor: "white",
-                  color: "grey",
-                  border: "none",
-                  borderBottom: "1px solid",
-                  fontStyle: "italic",
-                  textAlign: "left",
-                  borderRadius: "0",
-                  boxShadow: "none",
-                  minWidth: "10vw",
-                  maxWidth: "14vw",
-                }}
-              >
-                <span style={{ marginRight: "10vw" }}>Colour</span>
-              </Dropdown.Toggle>
-              <Dropdown.Menu style={{ border: "none" }}>
-                {colorList.map((v: any, i: number) => (
-                  <Dropdown.Item
-                    key={i}
-                    id={v.hex_value}
-                    style={{
-                      backgroundColor: v.hex_value,
-                      minWidth: "14vw",
-                      maxWidth: "14vw",
-                    }}
-                    onClick={(e: any) => {
-                      const { id } = e.target as HTMLTextAreaElement;
-                      filterListByColor(id);
-                    }}
-                  >
-                    {v.colour_name}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-        </Row>
-        <Row className="g-0 ">
-          {contentList[curPageIndex]?.map((v: any) => (
             <Col
               className=" d-none d-lg-block"
-              lg={3}
-              xs={6}
-              key={v.id}
+              lg={2}
               style={{ textAlign: "center" }}
             >
-              <Row className="g-0">
-                <Link href={`/detail/${v.id}`}>
-                  <Col>
-                    <Image
-                      src={v.image_link}
-                      alt={v.name}
-                      style={{
-                        maxWidth: "150px",
-                        maxHeight: "200px",
-                        minWidth: "150px",
-                        minHeight: "200px",
-                      }}
-                    />
-                  </Col>
-                </Link>
-              </Row>
-              <Row className="g-0">
-                <Col>{v.name}</Col>
-              </Row>
-              <Row className="g-0">
-                <Col>$ {v.price}</Col>
-              </Row>
+              <Dropdown className="d-inline ">
+                <Dropdown.Toggle
+                  id="dropdown-autoclose-true"
+                  style={{
+                    backgroundColor: "white",
+                    color: "grey",
+                    border: "none",
+                    borderBottom: "1px solid",
+                    fontStyle: "italic",
+                    textAlign: "left",
+                    borderRadius: "0",
+                    boxShadow: "none",
+                    minWidth: "10vw",
+                    maxWidth: "14vw",
+                  }}
+                >
+                  <span style={{ marginRight: "10vw" }}>Price</span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu style={{ border: "none" }}>
+                  {priceItems()}
+                </Dropdown.Menu>
+              </Dropdown>
             </Col>
-          ))}
+            <Col
+              lg={2}
+              className=" d-none d-lg-block"
+              style={{ textAlign: "center" }}
+            >
+              <Dropdown className="d-inline ">
+                <Dropdown.Toggle
+                  id="dropdown-autoclose-true"
+                  style={{
+                    backgroundColor: "white",
+                    color: "grey",
+                    border: "none",
+                    borderBottom: "1px solid",
+                    fontStyle: "italic",
+                    textAlign: "left",
+                    borderRadius: "0",
+                    boxShadow: "none",
+                    minWidth: "10vw",
+                    maxWidth: "14vw",
+                  }}
+                >
+                  <span style={{ marginRight: "10vw" }}>Colour</span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu style={{ border: "none" }}>
+                  {colorList.map((v: any, i: number) => (
+                    <Dropdown.Item
+                      key={i}
+                      id={v.hex_value}
+                      style={{
+                        backgroundColor: v.hex_value,
+                        minWidth: "14vw",
+                        maxWidth: "14vw",
+                      }}
+                      onClick={(e: any) => {
+                        const { id } = e.target as HTMLTextAreaElement;
+                        filterListByColor(id);
+                      }}
+                    >
+                      {v.colour_name}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+          </Row>
+          <Row className="g-0 ">
+            {contentList[curPageIndex]?.map((v: any) => (
+              <Col
+                className=" d-none d-lg-block"
+                lg={3}
+                xs={6}
+                key={v.id}
+                style={{ textAlign: "center" }}
+              >
+                <Row className="g-0">
+                  <Link href={`/detail/${v.id}`}>
+                    <Col>
+                      <Image
+                        src={v.image_link}
+                        alt={v.name}
+                        style={{
+                          maxWidth: "150px",
+                          maxHeight: "200px",
+                          minWidth: "150px",
+                          minHeight: "200px",
+                        }}
+                      />
+                    </Col>
+                  </Link>
+                </Row>
+                <Row className="g-0">
+                  <Col>{v.name}</Col>
+                </Row>
+                <Row className="g-0">
+                  <Col>$ {v.price}</Col>
+                </Row>
+              </Col>
+            ))}
+          </Row>
+          <Row className="g-0 pageNumber ">
+            <Col
+              className=" d-none d-lg-block"
+              lg={"auto"}
+              style={{ margin: "auto" }}
+            >
+              {pageButton()}
+            </Col>
+          </Row>
         </Row>
-        <Row className="g-0 pageNumber ">
-          <Col
-            className=" d-none d-lg-block"
-            lg={"auto"}
-            style={{ margin: "auto" }}
-          >
-            {pageButton()}
-          </Col>
-        </Row>
-      </Row>
-    </Container>
+      </Container>
+    </>
   );
 };
 

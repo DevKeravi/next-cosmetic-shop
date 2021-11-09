@@ -79,9 +79,19 @@ const Home: NextPage = () => {
               placeholder="Your e-mail"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
+              style={{ borderRadius: 0 }}
             />
             <span>
-              <Button style={{ backgroundColor: "#f68236", border: "0px" }}>
+              <Button
+                style={{
+                  backgroundColor: "#f68236",
+                  border: "0px",
+                  borderRadius: 0,
+                  padding: "1rem",
+                  paddingRight: "2rem",
+                  paddingLeft: "2rem",
+                }}
+              >
                 add
               </Button>
             </span>

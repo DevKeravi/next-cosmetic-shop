@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Image, Container, Row, Col } from "react-bootstrap";
+import { AiOutlineCaretRight } from "react-icons/ai";
 
 interface ProductCardProps {
   productList: any;
@@ -22,7 +23,9 @@ const ProductCard = ({ productList }: ProductCardProps) => {
         <Row className="g-0">
           <Col>
             <Link href={`/category/${productList[0].product_type}`}>
-              <a style={{ fontStyle: "italic", color: "grey" }}>show more</a>
+              <a style={{ fontStyle: "italic", color: "grey" }}>
+                show more <AiOutlineCaretRight style={{ fontSize: "0.7rem" }} />
+              </a>
             </Link>
           </Col>
         </Row>

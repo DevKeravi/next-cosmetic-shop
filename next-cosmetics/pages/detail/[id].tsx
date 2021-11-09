@@ -8,12 +8,24 @@ import {
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import LookCarousel from "../../src/components/LookCarousel";
+import { useRouter } from "next/dist/client/router";
+import Bread from "../../src/components/Bread";
+import { categoryGenerator } from "../../utils";
 
 const detail = () => {
   const { productDetail } = useSelector((state: any) => state.products);
-
+  const router = useRouter();
+  const category = categoryGenerator(productDetail.product_type);
+  const list = [
+    `/${category}`,
+    `/${productDetail.product_type}`,
+    `/${router.query.id}`,
+  ];
   return (
     <Container>
+      <Row className="g-0">
+        <Bread link={list} />
+      </Row>
       <Row className="g-0">
         <Col xs={12} className="col-lg-6 offset-lg-3  text-center">
           <Image
@@ -87,10 +99,10 @@ const detail = () => {
             <Button
               style={{
                 padding: "0.75rem",
-                backgroundColor: "orange",
+                backgroundColor: "#f68236",
                 borderRadius: "0",
                 boxShadow: "none",
-                borderColor: "orange",
+                borderColor: "#f68236",
               }}
             >
               ADD TO CART
@@ -99,7 +111,7 @@ const detail = () => {
         </Col>
       </Row>
       <Row>
-        <LookCarousel />
+        <LookCarousel title="You may also like" />
       </Row>
     </Container>
   );

@@ -110,7 +110,7 @@ const about = () => {
         </Col>
       </Row>
       <Row>
-        <LookCarousel />
+        <LookCarousel title="You may also like" />
       </Row>
     </Container>
   );

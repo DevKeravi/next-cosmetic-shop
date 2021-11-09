@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const gridLarge = 960;
 interface BreadProps {
-  link: string;
+  link: string[];
 }
 
 const LinkWrapper = styled.a`
@@ -41,12 +41,18 @@ const Bread = ({ link }: BreadProps) => {
           <Link href="/" passHref>
             <LinkWrapper>HOME</LinkWrapper>
           </Link>
-          <DivWrapper>/</DivWrapper>
-          <Link href={link} passHref>
-            <LinkWrapper>
-              {link.slice(1, link.length).toUpperCase()}
-            </LinkWrapper>
-          </Link>
+          {link.map((v: any) => {
+            return (
+              <>
+                <DivWrapper>/</DivWrapper>
+                <Link href={v} passHref>
+                  <LinkWrapper>
+                    {v.slice(1, v.length).toUpperCase()}
+                  </LinkWrapper>
+                </Link>
+              </>
+            );
+          })}
         </Col>
       </Row>
     </Container>
