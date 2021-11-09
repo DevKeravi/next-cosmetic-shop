@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import { useRouter } from "next/dist/client/router";
+import { useCallback, useState } from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
@@ -13,6 +14,11 @@ const basket = () => {
   const { userData } = useSelector((state: any) => state.user);
   const basketList = userData.basket;
   const [toggle, setToggle] = useState(false);
+  const router = useRouter();
+  const handleOrder = useCallback(() => {
+    setToggle(true);
+    router.push("#shipping");
+  }, []);
 
   if (userData === null) {
     return (
@@ -70,7 +76,7 @@ const basket = () => {
             <div className="d-grid">
               <Button
                 style={{
-                  backgroundColor: "orange",
+                  backgroundColor: "#f68236",
                   borderRadius: 0,
                   border: "none",
                   paddingTop: "0.8rem",
@@ -79,9 +85,7 @@ const basket = () => {
                   paddingRight: "0",
                 }}
                 size="lg"
-                onClick={() => {
-                  setToggle(true);
-                }}
+                onClick={handleOrder}
               >
                 <span style={{ fontSize: "0.95rem" }}>ORDER NOW</span>
               </Button>
@@ -90,7 +94,7 @@ const basket = () => {
         </Row>
       )}
       {!toggle ? null : (
-        <Row className="g-0 shippingAddress">
+        <Row className="g-0 shippingAddress" id="shipping">
           <LineCutter />
           <ShippingAddr />
         </Row>

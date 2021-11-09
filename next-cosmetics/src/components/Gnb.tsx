@@ -81,7 +81,7 @@ const Gnb = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Link href="/lip" passHref>
-                <LinkItem>Lip</LinkItem>
+                <LinkItem>Lip/Nail</LinkItem>
               </Link>
               <Link href="/eye" passHref>
                 <LinkItem>Eye</LinkItem>

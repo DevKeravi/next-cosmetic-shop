@@ -1,4 +1,5 @@
 import { Col } from "react-bootstrap";
+import Link from "next/link";
 
 export interface FooterCardProps {
   title: string;
@@ -19,9 +20,9 @@ const FooterCard = ({ title, categories }: FooterCardProps) => {
       </div>
       {categories.map((v, i) => (
         <div key={i}>
-          <a href={v.link} style={{ color: "grey", textDecoration: "none" }}>
-            {v.title}
-          </a>
+          <Link href={v.link} passHref>
+            <a style={{ color: "grey", textDecoration: "none" }}>{v.title}</a>
+          </Link>
         </div>
       ))}
     </Col>

@@ -19,6 +19,7 @@ import {
   DropdownButton,
   Dropdown,
 } from "react-bootstrap";
+import Link from "next/link";
 
 //리팩토링 필요
 
@@ -255,18 +256,20 @@ const category = () => {
               style={{ textAlign: "center" }}
             >
               <Row className="g-0">
-                <Col>
-                  <Image
-                    src={v.image_link}
-                    alt={v.name}
-                    style={{
-                      maxWidth: "150px",
-                      maxHeight: "200px",
-                      minWidth: "150px",
-                      minHeight: "200px",
-                    }}
-                  />
-                </Col>
+                <Link href={`/detail/${v.id}`}>
+                  <Col>
+                    <Image
+                      src={v.image_link}
+                      alt={v.name}
+                      style={{
+                        maxWidth: "150px",
+                        maxHeight: "200px",
+                        minWidth: "150px",
+                        minHeight: "200px",
+                      }}
+                    />
+                  </Col>
+                </Link>
               </Row>
               <Row className="g-0">
                 <Col>{v.name}</Col>
@@ -368,18 +371,20 @@ const category = () => {
               style={{ textAlign: "center" }}
             >
               <Row className="g-0">
-                <Col>
-                  <Image
-                    src={v.image_link}
-                    alt={v.name}
-                    style={{
-                      maxWidth: "150px",
-                      maxHeight: "200px",
-                      minWidth: "150px",
-                      minHeight: "200px",
-                    }}
-                  />
-                </Col>
+                <Link href={`/detail/${v.id}`}>
+                  <Col>
+                    <Image
+                      src={v.image_link}
+                      alt={v.name}
+                      style={{
+                        maxWidth: "150px",
+                        maxHeight: "200px",
+                        minWidth: "150px",
+                        minHeight: "200px",
+                      }}
+                    />
+                  </Col>
+                </Link>
               </Row>
               <Row className="g-0">
                 <Col>{v.name}</Col>

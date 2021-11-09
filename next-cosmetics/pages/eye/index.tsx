@@ -10,8 +10,11 @@ import { USER_LOGIN_SUCCESS } from "../../reducers/user";
 import ProductCard from "../../src/components/ProductCard";
 import wrapper from "../../store/configureStore";
 import LookCarousel from "../../src/components/LookCarousel";
+import Bread from "../../src/components/Bread";
+import { useRouter } from "next/dist/client/router";
 
 const eye = () => {
+  const router = useRouter();
   const { productList } = useSelector((state: RootState) => state.products);
   const eyeshadow = productList.filter((v: any) => {
     return v.product_type === "eyeliner";
@@ -25,6 +28,7 @@ const eye = () => {
 
   return (
     <>
+      <Bread link={router.pathname} />
       <ProductCard productList={eyebrow.slice(0, 4)} />
       <ProductCard productList={eyeshadow.slice(2, 6)} />
       <ProductCard productList={mascara.slice(2, 6)} />

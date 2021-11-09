@@ -68,7 +68,7 @@ const cardProps: FooterCardProps[] = [
       },
       {
         title: "Contact",
-        link: "#",
+        link: "/contact",
       },
     ],
   },
