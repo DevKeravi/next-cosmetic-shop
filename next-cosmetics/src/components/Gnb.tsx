@@ -45,6 +45,7 @@ const NavbarWrapper = styled(Navbar)`
 const Gnb = () => {
   const [toogleModal, setToogleModal] = useState(false);
   const { userData, isLoggedIn } = useSelector((state: any) => state.user);
+  const [toogleNav, setToogleNav] = useState(false);
   const dispatch = useDispatch();
 
   const handleLogin = useCallback(async () => {
@@ -90,14 +91,25 @@ const Gnb = () => {
             </Navbar.Brand>
           </Link>
           <BsFillHandbagFill
-            className="d-block d-md-none"
+            className={toogleNav ? "d-none" : "d-block d-md-none"}
             style={{ position: "absolute", fontSize: "1.8rem", left: "70%" }}
           />
           <BsFillHandbagFill
-            className="d-md-block d-lg-none d-none"
+            className={toogleNav ? "d-none" : "d-md-block d-lg-none d-none"}
             style={{ position: "absolute", fontSize: "1.8rem", left: "80%" }}
           />
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            onClick={(e) => {
+              if (toogleNav) {
+                setTimeout(() => {
+                  setToogleNav(!toogleNav);
+                }, 300);
+              } else {
+                setToogleNav(!toogleNav);
+              }
+            }}
+          />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Link href="/lip" passHref>
