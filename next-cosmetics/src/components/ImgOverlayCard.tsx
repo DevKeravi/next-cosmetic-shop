@@ -9,7 +9,7 @@ export interface OverlayCardProps {
 }
 const ImgOverlayCard = ({ src, title, desc, hashTag }: OverlayCardProps) => {
   return (
-    <Card className="bg-dark text-white " style={{ border: "0px solid" }}>
+    <Card className="text-white " style={{ border: "none", borderRadius: 0 }}>
       <Card.Img src={src} alt="Card image" />
       <Card.ImgOverlay className="d-flex">
         <div

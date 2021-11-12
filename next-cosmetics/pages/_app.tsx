@@ -5,10 +5,12 @@ import Top from "../src/components/Top";
 
 import Footer from "../src/components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import wrapper from "../store/configureStore";
 import axios from "axios";
 import { defaultUrl } from "../config/config";
 import { SSRProvider } from "@react-aria/ssr";
+import Head from "next/head";
 
 axios.defaults.baseURL = defaultUrl;
 
@@ -24,6 +26,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           marginBottom: "1vmax",
         }}
       >
+        <Head>
+          <meta charSet="utf-8" />
+          <title>Hazy shade of spring</title>
+        </Head>
         <Row className="g-0">
           <Col>
             <Top />
@@ -34,7 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </Col>
         </Row>
-        <Row>
+        <Row className="g-0">
           <Col>
             <Footer />
           </Col>

@@ -77,8 +77,8 @@ const cardProps: FooterCardProps[] = [
 const Footer = () => {
   return (
     <Container style={{ marginTop: "4vmax" }}>
-      <Row>
-        <Row className="d-block d-lg-none" style={{ marginBottom: "1rem" }}>
+      <Row className="">
+        <Row className="d-block d-lg-none g-0" style={{ marginBottom: "3rem" }}>
           <div style={{ border: "1px solid #e5e5e5" }}></div>
         </Row>
         <Col
@@ -101,7 +101,7 @@ const Footer = () => {
         </Col>
         <Col className="d-none d-lg-block">
           <Col style={{ padding: "0.5rem" }} lg={12}>
-            <Row>
+            <Row className="g-0">
               <Col style={{ marginBottom: "1rem" }}>
                 <div
                   className="footerCardTitle"
@@ -110,7 +110,11 @@ const Footer = () => {
                   SOCIAL
                 </div>
                 <div style={{ color: "grey" }}>
-                  <div>Shoper is made with love in Warsaw.</div>
+                  <div>
+                    {process.env.NODE_ENV === "production"
+                      ? "Production Mode"
+                      : "Development Mode"}
+                  </div>
                   <div>2021 All rights reserved. Dev Keravi</div>
                 </div>
               </Col>
@@ -153,7 +157,7 @@ const Footer = () => {
             }}
             md={12}
           >
-            <Row>
+            <Row className="g-0">
               <Col style={{ marginBottom: "2rem" }}>
                 <div
                   className="footerCardTitle"
@@ -162,7 +166,11 @@ const Footer = () => {
                   SOCIAL
                 </div>
                 <div style={{ color: "grey" }}>
-                  <div>Shoper is made with love in Warsaw.</div>
+                  <div>
+                    {process.env.NODE_ENV === "production"
+                      ? "Production Mode"
+                      : "Development Mode"}
+                  </div>
                   <div>2021 All rights reserved. Dev Keravi</div>
                 </div>
               </Col>

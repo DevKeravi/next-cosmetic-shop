@@ -5,14 +5,6 @@ import LookCarousel from "../src/components/LookCarousel";
 import wrapper from "../store/configureStore";
 
 const about = () => {
-  var randomImage = [];
-  for (var i = 0; i < 2; i++) {
-    randomImage.push(
-      `https://source.unsplash.com/random/1200x600?sig=${Math.floor(
-        Math.random() * 10000
-      )}`
-    );
-  }
   return (
     <Container fluid style={{ marginTop: "2rem", marginBottom: "5rem" }}>
       <Row className="g-0">
@@ -33,7 +25,7 @@ const about = () => {
           </Row>
           <Row className="g-4">
             <Col lg={6} xs={12}>
-              <Image src={randomImage[0]} alt="WHO WE ARE" fluid />
+              <Image src="/1200x6001.jpeg" alt="WHO WE ARE" fluid />
               <Row
                 className="g-0"
                 style={{ marginTop: "2rem", marginBottom: "1rem" }}
@@ -70,7 +62,7 @@ const about = () => {
               </Row>
             </Col>
             <Col lg={6} xs={12}>
-              <Image src={randomImage[1]} alt="WHO WE ARE" fluid />
+              <Image src="/1200x6002.jpeg" alt="WHO WE ARE" fluid />
               <Row
                 className="g-0"
                 style={{ marginTop: "2rem", marginBottom: "1rem" }}

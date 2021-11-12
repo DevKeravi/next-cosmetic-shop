@@ -1,4 +1,5 @@
 import wrapper from "../../store/configureStore";
+import Head from "next/head";
 import {
   GET_PRODUCT_LIST_BY_CATEGORY_REQUEST,
   GET_PRODUCT_LIST_BY_CATEGORY_SUCCESS,
@@ -205,6 +206,9 @@ const category = () => {
 
   return (
     <>
+      <Head>
+        <title>Hazy shade of spring | {router.query?.category}</title>
+      </Head>
       <Bread link={link} />
       <Container fluid style={{ marginTop: "2rem" }}>
         <Row className="g-0">

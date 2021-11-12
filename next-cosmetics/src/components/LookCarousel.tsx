@@ -3,15 +3,6 @@ interface lookProps {
   title: string;
 }
 const LookCarousel = ({ title }: lookProps) => {
-  var randomImage = [];
-  for (var i = 0; i < 3; i++) {
-    randomImage.push(
-      `https://source.unsplash.com/random/1920x1080?sig=${Math.floor(
-        Math.random() * 10000
-      )}`
-    );
-  }
-
   return (
     <Container
       fluid
@@ -39,7 +30,7 @@ const LookCarousel = ({ title }: lookProps) => {
               <img
                 style={{ maxHeight: "180px" }}
                 className="d-block w-100"
-                src={randomImage[0]}
+                src="/1920x10801.jpeg"
                 alt="First slide"
               />
               <Carousel.Caption></Carousel.Caption>
@@ -48,7 +39,7 @@ const LookCarousel = ({ title }: lookProps) => {
               <img
                 style={{ maxHeight: "180px" }}
                 className="d-block w-100"
-                src={randomImage[1]}
+                src="/1920x10803.jpeg"
                 alt="Second slide"
               />
 
@@ -58,7 +49,7 @@ const LookCarousel = ({ title }: lookProps) => {
               <img
                 style={{ maxHeight: "180px" }}
                 className="d-block w-100"
-                src={randomImage[2]}
+                src="/1920x10802.jpeg"
                 alt="Third slide"
               />
 

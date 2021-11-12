@@ -8,10 +8,11 @@ const makeStore = (context: any) =>
   configureStore({
     reducer,
     // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-    devTools: true,
+    devTools: process.env.NODE_ENV !== "production",
   });
 
 const wrapper = createWrapper(makeStore, {
-  debug: true,
+  debug: process.env.NODE_ENV !== "production",
 });
+
 export default wrapper;

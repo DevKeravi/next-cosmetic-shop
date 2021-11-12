@@ -13,7 +13,6 @@ export type State = {
 const rootReducer = (state: State | undefined, action: AnyAction) => {
   switch (action.type) {
     case HYDRATE:
-      console.log("HYDRATE");
       return { ...state, ...action.payload };
     default: {
       const combineReducer = combineReducers({

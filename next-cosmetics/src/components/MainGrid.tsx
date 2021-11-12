@@ -10,7 +10,7 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card2",
-    src: "http://placeimg.com/300/300/animals",
+    src: "/300x3001.jpeg",
     desc: [
       "Opening Ceremony",
       "@IndonesiaFW tomorrow",
@@ -21,17 +21,17 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card3",
-    src: "http://placeimg.com/300/300/architecture",
+    src: "/300x3002.jpeg",
     title: ["CHUCK TAYLORS"],
     desc: ["$125.00"],
   },
   {
     key: "card4",
-    src: "lip.png",
+    src: "/lip.png",
   },
   {
     key: "card5",
-    src: "http://placeimg.com/300/300/nature",
+    src: "/300x3003.jpeg",
     title: ["JAXON HAT"],
     desc: ["BEANIE HAT"],
   },
@@ -41,7 +41,7 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card7",
-    src: "http://placeimg.com/300/300/any",
+    src: "/300x3004.jpeg",
     title: ["ELEGANT SHOES"],
     desc: ["BRAIDED LEATHER"],
   },
@@ -57,13 +57,13 @@ const ImgProps: OverlayCardProps[] = [
   },
   {
     key: "card9",
-    src: "http://placeimg.com/300/300/tech",
+    src: "/300x3005.jpeg",
     title: ["BASIC BLAZER"],
     desc: ["FROM $199.00"],
   },
   {
     key: "card10",
-    src: "http://placeimg.com/300/600/people",
+    src: "/300x6001.jpeg",
     title: ["JEANS FOR", "ADVENTURE"],
     desc: ["NEW ARRIVAL"],
   },

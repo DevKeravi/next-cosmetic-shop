@@ -1,54 +1,39 @@
 import { Col, Container, Row } from "react-bootstrap";
 
 import ImgOverlayCard, { OverlayCardProps } from "./ImgOverlayCard";
-var randomImage = [];
-for (var i = 0; i < 4; i++) {
-  randomImage.push(
-    `https://source.unsplash.com/random/450x300?sig=${Math.floor(
-      Math.random() * 10000
-    )}`
-  );
-}
-for (var i = 0; i < 2; i++) {
-  randomImage.push(
-    `https://source.unsplash.com/random/450x200?sig=${Math.floor(
-      Math.random() * 10000
-    )}`
-  );
-}
 
 const ResGridProps: OverlayCardProps[] = [
   {
     key: "card1",
-    src: randomImage[0],
+    src: "/450x3001.jpeg",
   },
   {
     key: "card2",
-    src: randomImage[4],
+    src: "/450x2001.jpeg",
     title: ["ELEGANT SHOES"],
     desc: ["BRAIDED LEATHER"],
   },
   {
     key: "card3",
-    src: randomImage[1],
+    src: "/450x3002.jpeg",
     title: ["CHUCK TAYORS"],
     desc: ["$125.00"],
   },
   {
     key: "card4",
-    src: randomImage[2],
+    src: "/450x3003.jpeg",
     title: ["BASIC BLAZER"],
     desc: ["FROM $199.00"],
   },
   {
     key: "card5",
-    src: randomImage[5],
+    src: "/450x2002.jpeg",
     title: ["PREMIUM PRODUCETS"],
     desc: ["- 50% SALE"],
   },
   {
     key: "card6",
-    src: randomImage[3],
+    src: "/450x3004.jpeg",
     title: ["BASIC BLAZER"],
     desc: ["FROM $199.00"],
   },
@@ -63,16 +48,16 @@ const MainGridRes = () => {
         <Col xs={12}>
           <ImgOverlayCard {...ResGridProps[1]} />
         </Col>
-        <Col md={12}>
+        <Col xs={12}>
           <ImgOverlayCard {...ResGridProps[2]} />
         </Col>
-        <Col md={12}>
+        <Col xs={12}>
           <ImgOverlayCard {...ResGridProps[3]} />
         </Col>
-        <Col md={12}>
+        <Col xs={12}>
           <ImgOverlayCard {...ResGridProps[4]} />
         </Col>
-        <Col md={12}>
+        <Col xs={12}>
           <ImgOverlayCard {...ResGridProps[5]} />
         </Col>
       </Row>

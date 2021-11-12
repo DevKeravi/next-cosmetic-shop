@@ -3,12 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MainCarousel from "../src/components/MainCarousel";
 import { Row, Col, Container } from "react-bootstrap";
 import { Button } from "react-bootstrap/";
-import MainGrid from "../src/components/MainGrid";
-import MainGridRes from "../src/components/MainGridRes";
 import axios from "axios";
 import { USER_LOGIN_SUCCESS } from "../reducers/user";
 import wrapper from "../store/configureStore";
+import dynamic from "next/dynamic";
+
 const Home: NextPage = () => {
+  const MainGrid = dynamic(() => import("../src/components/MainGrid"));
+  const MainGridRes = dynamic(() => import("../src/components/MainGridRes"));
   return (
     <Container fluid style={{ padding: 0 }}>
       <Row>
@@ -19,7 +21,7 @@ const Home: NextPage = () => {
               textAlign: "center",
               marginTop: "8vw",
               marginBottom: "10vw",
-              fontSize: "7vmax",
+              fontSize: "6.5vmax",
             }}
           >
             <p style={{ lineHeight: "1.2" }}>HAZY SHADE OF SPRING</p>
@@ -61,6 +63,14 @@ const Home: NextPage = () => {
         >
           <p style={{ fontSize: "2rem" }}>SIGN UP TO RECEIVE OUR UPDATES</p>
           <p
+            className="d-none d-lg-block"
+            style={{ fontSize: "1.5vmax", fontStyle: "italic", color: "grey" }}
+          >
+            Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque
+            pentatibus et ultrices volutpat.
+          </p>
+          <p
+            className="d-block d-lg-none"
             style={{ fontSize: "1.5vmax", fontStyle: "italic", color: "grey" }}
           >
             Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque
@@ -68,8 +78,8 @@ const Home: NextPage = () => {
           </p>
         </Col>
         <Col
-          lg={{ offset: 4 }}
-          className="col-lg-4"
+          lg={{ offset: 3 }}
+          className="col-lg-6"
           style={{ marginBottom: "8vw" }}
         >
           <div className="input-group mb-3">
@@ -77,8 +87,6 @@ const Home: NextPage = () => {
               type="text"
               className="form-control"
               placeholder="Your e-mail"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
               style={{ borderRadius: 0 }}
             />
             <span>
