@@ -1,4 +1,4 @@
-import { Carousel, Container } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 const MainCarousel = () => {
   return (
     <Carousel interval={3000}>

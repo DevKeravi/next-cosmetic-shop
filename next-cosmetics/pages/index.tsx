@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 const Home: NextPage = () => {
   const MainGrid = dynamic(() => import("../src/components/MainGrid"));
   const MainGridRes = dynamic(() => import("../src/components/MainGridRes"));
+
   return (
     <Container fluid style={{ padding: 0 }}>
       <Row>

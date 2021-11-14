@@ -1,4 +1,5 @@
 import { Card } from "react-bootstrap";
+
 export interface OverlayCardProps {
   key?: string;
   src: string;
@@ -7,6 +8,7 @@ export interface OverlayCardProps {
   hashTag?: string;
   resVisable?: boolean;
 }
+
 const ImgOverlayCard = ({ src, title, desc, hashTag }: OverlayCardProps) => {
   return (
     <Card className="text-white " style={{ border: "none", borderRadius: 0 }}>

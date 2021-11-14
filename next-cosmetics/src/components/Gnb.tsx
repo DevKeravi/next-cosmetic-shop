@@ -29,6 +29,7 @@ const LinkItem = styled(Nav.Link)`
   margin-left: 2vw;
   margin-right: 2vw;
 `;
+
 const NavbarWrapper = styled(Navbar)`
   button {
     background-color: #8d8d8d;
@@ -58,10 +59,12 @@ const Gnb = () => {
       dispatch({ type: USER_LOGIN_FAILURE.type, payload: error });
     }
   }, []);
+
   const handleLogout = useCallback(async () => {
     await axios.get("http://localhost:3000/api/logout");
     dispatch({ type: USER_LOGOUT_REQUEST.type });
   }, []);
+
   return (
     <>
       <NavbarWrapper

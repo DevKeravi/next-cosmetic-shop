@@ -70,11 +70,13 @@ const category = () => {
 
   const colorPalette = (productList: any) => {
     const colors: any[] = [];
+
     productList.map((product: any) => {
       product.product_colors.map((color: any) => {
         colors.push(color);
       });
     });
+
     colors.reduce((acc, current) => {
       if (
         acc.findIndex(
@@ -87,6 +89,7 @@ const category = () => {
     }, []);
     return colors;
   };
+
   const colorList = colorPalette(productList);
 
   var contentList = [];

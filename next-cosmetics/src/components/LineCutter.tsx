@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const LeftDiagnoal = styled.div`
   width: 3px;
   height: 30px;
@@ -15,6 +16,7 @@ const RightDiagnoal = styled.div`
   display: inline-block;
   margin-right: 1rem;
 `;
+
 const LineCutter = () => {
   return (
     <div

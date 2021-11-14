@@ -42,6 +42,7 @@ const detail = () => {
           content={`https://hazyshade.com/category/${productDetail.id}`}
         />
       </Head>
+
       <Container fluid>
         <Row className="g-0">
           <Bread link={list} />

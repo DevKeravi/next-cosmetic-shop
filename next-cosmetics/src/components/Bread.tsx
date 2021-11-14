@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const gridLarge = 960;
+
 interface BreadProps {
   link: string[];
 }
@@ -18,7 +19,6 @@ const DivWrapper = styled.span`
   color: grey;
 `;
 
-// 추후 여러 링크를 map으로 순회하면서 만들게 변경
 const Bread = ({ link }: BreadProps) => {
   const [isMobile, setIsMobile] = useState(0);
   useEffect(() => {
@@ -34,6 +34,7 @@ const Bread = ({ link }: BreadProps) => {
       window.removeEventListener("resize", onResize);
     };
   }, []);
+
   return (
     <Container fluid style={{ marginBottom: "3rem" }}>
       <Row style={isMobile ? { marginTop: "1.5rem", textAlign: "center" } : {}}>

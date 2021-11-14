@@ -61,6 +61,7 @@ const ShoppingBagTable = ({ bagList }: bagProps) => {
       dispatch({ type: DELETE_BASKET_ITEM_FAILURE.type, payload: error });
     }
   }, []);
+
   if (bagList.length === 0) {
     return (
       <div
