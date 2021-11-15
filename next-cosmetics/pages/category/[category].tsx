@@ -23,6 +23,7 @@ import Link from "next/link";
 import Bread from "../../src/components/Bread";
 import { useRouter } from "next/dist/client/router";
 import { categoryGenerator } from "../../utils/";
+import LookCarousel from "../../src/components/LookCarousel";
 
 //리팩토링 필요
 
@@ -420,6 +421,9 @@ const category = () => {
               {pageButton()}
             </Col>
           </Row>
+        </Row>
+        <Row>
+          <LookCarousel title="Check our lookbook" />
         </Row>
       </Container>
     </>

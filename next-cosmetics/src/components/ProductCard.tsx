@@ -8,10 +8,10 @@ interface ProductCardProps {
 const ProductCard = ({ productList }: ProductCardProps) => {
   const title = productList[0]?.product_type.replace("_", " ").toUpperCase();
   return (
-    <Container style={{ marginTop: "2rem", marginBottom: "1rem" }}>
+    <Container style={{ marginTop: "3rem", marginBottom: "1rem" }}>
       <Row
         className="g-0"
-        style={{ textAlign: "center", marginBottom: "1rem" }}
+        style={{ textAlign: "center", marginBottom: "2rem" }}
       >
         <Col
           style={{

@@ -8,6 +8,7 @@ const ImgProps: OverlayCardProps[] = [
     title: ["HEATHER", "GREY BASICS"],
     desc: ["NEW ARRIVAL"],
   },
+
   {
     key: "card2",
     src: "/300x3001.jpeg",

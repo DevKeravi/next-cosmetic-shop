@@ -36,7 +36,7 @@ const Bread = ({ link }: BreadProps) => {
   }, []);
 
   return (
-    <Container fluid style={{ marginBottom: "3rem" }}>
+    <Container fluid style={{ marginBottom: "1.5rem" }}>
       <Row style={isMobile ? { marginTop: "1.5rem", textAlign: "center" } : {}}>
         <Col style={{ color: "grey" }}>
           <Link href="/" passHref>

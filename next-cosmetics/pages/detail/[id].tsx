@@ -79,7 +79,7 @@ const detail = () => {
                 fontSize: "1.2rem",
               }}
             >
-              <Col>$ {productDetail.price}</Col>
+              <Col style={{ color: "#606060" }}>$ {productDetail.price}</Col>
             </Row>
             <Row
               className="g-0 d-lg-none d-block  priceBig"
@@ -89,27 +89,32 @@ const detail = () => {
                 fontSize: "2rem",
               }}
             >
-              <Col>$ {productDetail.price}</Col>
+              <Col style={{ color: "#606060" }}>$ {productDetail.price}</Col>
             </Row>
             <Row className="g-0" style={{ marginBottom: "2vmax" }}>
-              <Col>{productDetail.description}</Col>
+              <Col style={{ color: "#949494" }}>
+                {productDetail.description}
+              </Col>
             </Row>
             <Row className="g-0" style={{ marginBottom: "1vmax" }}>
               <Col>COLOR</Col>
             </Row>
             <Row className="g-0" style={{ marginBottom: "3vmax" }}>
               <Col>
-                {productDetail.product_colors.map((colorObj: any) => (
-                  <div
-                    style={{
-                      display: "inline-block",
-                      width: "32px",
-                      height: "32px",
-                      backgroundColor: colorObj.hex_value,
-                      marginRight: "2px",
-                    }}
-                  ></div>
-                ))}
+                {productDetail.product_colors.map(
+                  (colorObj: any, i: number) => (
+                    <div
+                      style={{
+                        display: "inline-block",
+                        width: "32px",
+                        height: "32px",
+                        backgroundColor: colorObj.hex_value,
+                        marginRight: "2px",
+                      }}
+                      key={i}
+                    ></div>
+                  )
+                )}
               </Col>
             </Row>
           </Col>

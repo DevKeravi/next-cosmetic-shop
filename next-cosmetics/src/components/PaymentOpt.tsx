@@ -21,6 +21,14 @@ const FormGroup = styled(Form.Group)`
   margin-top: 2rem;
 `;
 
+const RowWrapper = styled(Row)`
+  font-size: 1.2rem;
+  color: grey;
+`;
+const ColAlignWrapper = styled(Col)`
+  text-align: ${(props) => props.align};
+`;
+
 const PaymentOpt = () => {
   const { basket } = useSelector((state: any) => state.user.userData);
 
@@ -66,14 +74,15 @@ const PaymentOpt = () => {
         <Col>All fileds are required</Col>
       </Row>
       <Container style={{ marginBottom: "5rem" }}>
-        <Row className="g-4" style={{ fontSize: "1.2rem", color: "grey" }}>
-          <Col style={{ textAlign: "right" }}>Subtotal:</Col>
-          <Col style={{ textAlign: "left" }}>${subtotal}</Col>
-        </Row>
-        <Row className="g-4" style={{ fontSize: "1.2rem", color: "grey" }}>
-          <Col style={{ textAlign: "right" }}>Shipping:</Col>
-          <Col style={{ textAlign: "left" }}>$15.00</Col>
-        </Row>
+        <RowWrapper className="g-4">
+          <ColAlignWrapper align="right">Subtotal:</ColAlignWrapper>
+          <ColAlignWrapper align="left">${subtotal}</ColAlignWrapper>
+        </RowWrapper>
+        <RowWrapper className="g-4">
+          <ColAlignWrapper align="right">Shipping:</ColAlignWrapper>
+          <ColAlignWrapper align="left">$15.00</ColAlignWrapper>
+        </RowWrapper>
+
         <Row className="g-4" style={{ fontSize: "1.2rem", color: "#f68236" }}>
           <Col style={{ textAlign: "right" }}>Total:</Col>
           <Col style={{ textAlign: "left" }}>${subtotal + 15}</Col>
